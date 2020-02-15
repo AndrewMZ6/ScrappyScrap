@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 
 URL = 'https://www.nexusmods.com/skyrimspecialedition'
 
+f = open(r'D:\Code\Python_Projects\Topics\Scrapper\results\results.txt', mode='w', encoding='utf-8')
+
 page_html = requests.get(URL)     
 
 page_soup = BeautifulSoup(page_html.content, 'html.parser')
@@ -24,5 +26,6 @@ for k in mod_containers:  # for each of 20 mods do
 
 	i += 1
 
-	print('--------------================= iteration ' + str(i) + '=================----------------' + '\n')
-	print('TITLE = ',container_title + '\n' + 'DESCRIPTION = ' + container_desc + '\n')
+	record = "--------------================= iteration " + str(i) + "=================----------------" + '\n' + '\n' + \
+	'TITLE = ' + container_title + '\n' + 'DESCRIPTION = ' + container_desc + '\n' + '\n'
+	f.write(record)
